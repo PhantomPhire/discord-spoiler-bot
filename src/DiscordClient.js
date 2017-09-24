@@ -6,6 +6,7 @@
  */
 
 const DiscordJS = require('discord.js');
+const LoginMod = require('Login');
 
 const DISCORD_JS = 'discord.js';
 const DISCORD_IO = 'discord.io';
@@ -38,7 +39,7 @@ class DiscordClient {
         let client = config.client;
         if (config.token) {
             client = new DiscordJS.Client();
-            client.login(config.token);
+            LoginMod.injectBot(bot, config.token);
         }
         this.type = DiscordClient.isDiscordJS(client) ? DISCORD_JS : DISCORD_IO;
         this.client = client;
